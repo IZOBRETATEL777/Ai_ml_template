@@ -124,7 +124,8 @@ def train(model, train_loader, val_loader, optimizer, loss_fn, n_epochs, device)
 
 
 def main():
-    device = "cpu"
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
     tr = transforms.Compose([
         transforms.ToTensor(),
         transforms.Resize([224, 224])
